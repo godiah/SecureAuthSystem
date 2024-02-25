@@ -1,0 +1,23 @@
+Generate an App Password (if 2-Step Verification is enabled):
+
+If you have 2-Step Verification enabled for your Google account, you'll need to generate an app password specifically for your PHP application.
+Go to the "Security" settings in your Google account.
+Scroll down to the "Signing in to Google" section.
+Click on "App passwords." You may need to enter your Google account password again for security purposes.
+Select "Mail" from the dropdown list and "Other" for the app.
+Click "Generate."
+Copy the generated app password. This is the password you'll use in your PHP mailer configuration.
+Configure PHP Mailer:
+
+In your PHP code where you set up PHP Mailer, configure it to use Gmail's SMTP server with the following settings:
+
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587; // or 465 for SSL
+    $mail->SMTPSecure = 'tls'; // or 'ssl' for SSL
+    $mail->SMTPAuth = true;
+    $mail->Username = 'your@gmail.com'; // Your Gmail address
+    $mail->Password = 'your-app-password'; // Use the generated app password here
+    Test Your Configuration:
+
+After configuring PHP Mailer, send a test email to verify that everything is working correctly.
